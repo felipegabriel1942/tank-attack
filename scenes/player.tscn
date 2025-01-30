@@ -22,11 +22,13 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_wbr2p")
 
 [node name="Cannon" type="Node2D" parent="."]
-position = Vector2(-4, -1)
+position = Vector2(-1.4, 0)
 script = ExtResource("3_we0hf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cannon"]
 texture_filter = 1
-position = Vector2(13, 1)
+position = Vector2(10, 0)
 rotation = 4.71239
 texture = ExtResource("3_lc2kr")
+
+[node name="BulletContainer" type="Node" parent="."]
