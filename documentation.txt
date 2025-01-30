@@ -1,0 +1,26 @@
+TANK ATTACK
+
+1. Pontos principais:
+	- visão top down 2D.
+	- os inimigos não serão gerados automaticamente.
+	- tanto o jogador quando o inimigo podem atacar.
+	- o jogador deve sempre se movimentar para uma direção especifica e seguir nela.
+	- vai ter um hud com pontos de vida e etc.
+	- o canhão e o tank terão movimentações diferentes, ou seja, o canhão vai se posicionar para onde o mouse estiver e o movimento do tank
+	será utilizando o teclado (WASD).
+	- Devem existir power-ups. Inicialmente só o de regenerar a vida.
+	- ao se mover o tank deve deixar rastros no chão.
+	- criar menu de iniciar jogo.
+	- criar tela de game-over.
+	- criar um score.
+	- executar animação de explosão quando inimigos ou o jogador explodirem.
+	- criar mais de 1evel. assim que o jogador chegar no final do level outro deve ser carregado.
+	- adicionar sons de disparo, explosão, tank se movimentando.
+	- adicionar trilha sonora.
+	- criar movimentação dos tanks inimigos.
+	- criar tipos diferentes de inimigos.
+	
+2. Bônus:
+	- Controlar o tiro do jogador, fazendo com que ele espere entre cada tiro. Isso vai fazer com que cada tiro seja pensado melhor antes 
+	de ser feito. Basicamente seria como recarregar o canhão.
+	- Criar efeitos de particula de fogo para o tank do jogador indicando que ele está quase explodindo. Isso pode se extender para os inimigos também.
