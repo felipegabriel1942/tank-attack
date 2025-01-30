@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl8vj3l5bjkgl"]
+[gd_scene load_steps=8 format=3 uid="uid://cl8vj3l5bjkgl"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fmkef"]
 [ext_resource type="Texture2D" uid="uid://gld5ox3bwil8" path="res://assets/sprites/tankBody_green.png" id="1_oxmaw"]
 [ext_resource type="Texture2D" uid="uid://b1xrllk08a7up" path="res://assets/sprites/tankGreen_barrel2.png" id="3_lc2kr"]
 [ext_resource type="Script" path="res://scripts/cannon.gd" id="3_we0hf"]
+[ext_resource type="Texture2D" uid="uid://crk0eavof52a2" path="res://assets/sprites/shotThin.png" id="5_svxv0"]
+[ext_resource type="AudioStream" uid="uid://b5pijoufsqtlf" path="res://assets/sounds/cannon-shot.mp3" id="6_5ijdc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbr2p"]
 size = Vector2(37, 36)
@@ -31,4 +33,15 @@ position = Vector2(10, 0)
 rotation = 4.71239
 texture = ExtResource("3_lc2kr")
 
+[node name="Burst" type="Node2D" parent="Cannon"]
+position = Vector2(37.4, 0)
+rotation = -1.55508
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannon/Burst"]
+texture_filter = 1
+texture = ExtResource("5_svxv0")
+
 [node name="BulletContainer" type="Node" parent="."]
+
+[node name="CannonShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5ijdc")
