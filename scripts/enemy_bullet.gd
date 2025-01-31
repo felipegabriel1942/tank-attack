@@ -21,3 +21,8 @@ func _process(delta):
 func _on_area_entered(area):
 	area.take_damage(damage)
 	queue_free()
+
+
+func _on_body_entered(body):
+	body._take_damage(1)
+	queue_free()

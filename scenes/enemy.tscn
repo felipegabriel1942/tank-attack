@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://0orgnpkysc8y"]
+
+[ext_resource type="Texture2D" uid="uid://lhterecigiu" path="res://assets/sprites/tankBody_red_outline.png" id="1_dkwbo"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dxlaj"]
+[ext_resource type="Script" path="res://scripts/enemy_canon.gd" id="3_tj7ff"]
+[ext_resource type="Texture2D" uid="uid://b1xrllk08a7up" path="res://assets/sprites/tankGreen_barrel2.png" id="4_1o2m6"]
+[ext_resource type="Texture2D" uid="uid://crk0eavof52a2" path="res://assets/sprites/shotThin.png" id="5_5as11"]
+[ext_resource type="AudioStream" uid="uid://b5pijoufsqtlf" path="res://assets/sounds/cannon-shot.mp3" id="6_7panl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udlud"]
+size = Vector2(38, 40)
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_dxlaj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_dkwbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_udlud")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Cannon" type="Node2D" parent="."]
+position = Vector2(-3, 0)
+script = ExtResource("3_tj7ff")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannon"]
+texture_filter = 1
+position = Vector2(10, 0)
+rotation = 4.71239
+texture = ExtResource("4_1o2m6")
+
+[node name="Burst" type="Node2D" parent="Cannon"]
+position = Vector2(37.4, 0)
+rotation = -1.55508
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannon/Burst"]
+texture_filter = 1
+texture = ExtResource("5_5as11")
+
+[node name="BulletContainer" type="Node" parent="."]
+
+[node name="CannonShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7panl")
+
+[connection signal="timeout" from="ShootTimer" to="Cannon" method="_on_shoot_timer_timeout"]

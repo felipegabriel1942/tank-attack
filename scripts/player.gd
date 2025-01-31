@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var move_speed = 75
 @export var rotation_speed = 1.5
+@export var health = 3
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -27,3 +28,10 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 	
 	move_and_slide()
+
+
+func _take_damage(damage):
+	health -= damage
+	
+	if health <= 0:
+		queue_free()

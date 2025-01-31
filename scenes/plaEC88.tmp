@@ -46,5 +46,3 @@ texture = ExtResource("5_svxv0")
 
 [node name="CannonShotSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_5ijdc")
-
-[node name="Camera2D" type="Camera2D" parent="."]
