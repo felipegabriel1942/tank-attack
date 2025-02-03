@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0orgnpkysc8y"]
+[gd_scene load_steps=8 format=3 uid="uid://0orgnpkysc8y"]
 
 [ext_resource type="Texture2D" uid="uid://lhterecigiu" path="res://assets/sprites/tankBody_red_outline.png" id="1_dkwbo"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dxlaj"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c1tyj5hsvims" path="res://assets/sprites/tankRed_barrel1.png" id="4_d60yt"]
 [ext_resource type="Texture2D" uid="uid://crk0eavof52a2" path="res://assets/sprites/shotThin.png" id="5_5as11"]
 [ext_resource type="AudioStream" uid="uid://b5pijoufsqtlf" path="res://assets/sounds/cannon-shot.mp3" id="6_7panl"]
-[ext_resource type="PackedScene" uid="uid://ock51e55b7ch" path="res://scenes/health_component.tscn" id="7_qcc0p"]
-[ext_resource type="PackedScene" uid="uid://btl2sl18q3kim" path="res://scenes/damage_component.tscn" id="8_5ttem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udlud"]
 size = Vector2(38, 40)
@@ -46,16 +44,12 @@ rotation = -1.55508
 texture_filter = 1
 texture = ExtResource("5_5as11")
 
+[node name="BulletContainer" type="Node" parent="."]
+
 [node name="CannonShotSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_7panl")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_qcc0p")]
-
-[node name="DamageComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_5ttem")]
-health_component = NodePath("../HealthComponent")
-
 [connection signal="timeout" from="ShootTimer" to="Cannon" method="_on_shoot_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="Cannon" method="_on_visible_on_screen_notifier_2d_screen_entered"]
-[connection signal="died" from="DamageComponent" to="." method="_on_damage_component_died"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://0orgnpkysc8y"]
+
+[ext_resource type="Texture2D" uid="uid://lhterecigiu" path="res://assets/sprites/tankBody_red_outline.png" id="1_dkwbo"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dxlaj"]
+[ext_resource type="PackedScene" uid="uid://b8tolfi8s8hgm" path="res://scenes/cannon_component.tscn" id="3_rnw6r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udlud"]
+size = Vector2(38, 40)
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_dxlaj")
+health = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_dkwbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_udlud")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Cannon" parent="." instance=ExtResource("3_rnw6r")]
+script = null
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

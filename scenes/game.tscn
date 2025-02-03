@@ -177,14 +177,11 @@ rotation = -2.78782
 [node name="Enemy6" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(-5, -53)
 rotation = -3.12297
-health = 4
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(-467, -264)
 rotation = -3.12297
-health = 4
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(541, -277)
 rotation = -3.12297
-health = 4

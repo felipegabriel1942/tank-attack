@@ -27,7 +27,7 @@ func _shoot():
 	
 	bullet_instance.bullet_rotation = global_rotation + canon_rotation_offset
 	bullet_instance.global_position = burst.global_position
-	bullet_container.add_child(bullet_instance)
+	get_tree().current_scene.add_child(bullet_instance)
 	cannon_shot_sound.play()
 	
 	_show_burst_effect()

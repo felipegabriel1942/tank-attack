@@ -30,7 +30,7 @@ func _shoot():
 	bullet_instance.bullet_rotation = global_rotation + canon_rotation_offset
 	bullet_instance.global_position = burst.global_position
 	bullet_instance.speed = bullet_speed
-	bullet_container.add_child(bullet_instance)
+	get_tree().current_scene.add_child(bullet_instance)
 	cannon_shot_sound.play()
 	
 	burst.visible = true
@@ -48,4 +48,3 @@ func get_player():
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	is_on_screen = true
-

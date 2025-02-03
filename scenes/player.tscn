@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl8vj3l5bjkgl"]
+[gd_scene load_steps=10 format=3 uid="uid://cl8vj3l5bjkgl"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_fmkef"]
 [ext_resource type="Texture2D" uid="uid://gld5ox3bwil8" path="res://assets/sprites/tankBody_green.png" id="1_oxmaw"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/cannon.gd" id="3_we0hf"]
 [ext_resource type="Texture2D" uid="uid://crk0eavof52a2" path="res://assets/sprites/shotThin.png" id="5_svxv0"]
 [ext_resource type="AudioStream" uid="uid://b5pijoufsqtlf" path="res://assets/sounds/cannon-shot.mp3" id="6_5ijdc"]
+[ext_resource type="PackedScene" uid="uid://ock51e55b7ch" path="res://scenes/health_component.tscn" id="7_0yi8p"]
+[ext_resource type="PackedScene" uid="uid://btl2sl18q3kim" path="res://scenes/damage_component.tscn" id="8_110fp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbr2p"]
 size = Vector2(37, 36)
@@ -46,3 +48,10 @@ texture = ExtResource("5_svxv0")
 
 [node name="CannonShotSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_5ijdc")
+
+[node name="HealthComponent" parent="." instance=ExtResource("7_0yi8p")]
+
+[node name="DamageComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_110fp")]
+health_component = NodePath("../HealthComponent")
+
+[connection signal="died" from="DamageComponent" to="." method="_on_damage_component_died"]

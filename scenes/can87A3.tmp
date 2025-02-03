@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8tolfi8s8hgm"]
+
+[ext_resource type="Script" path="res://scripts/base_cannon.gd" id="1_3jxdb"]
+[ext_resource type="Texture2D" uid="uid://crk0eavof52a2" path="res://assets/sprites/shotThin.png" id="2_0ekbn"]
+[ext_resource type="AudioStream" uid="uid://b5pijoufsqtlf" path="res://assets/sounds/cannon-shot.mp3" id="3_cld3y"]
+
+[node name="Cannon" type="Node2D"]
+position = Vector2(-3, 0)
+script = ExtResource("1_3jxdb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(18, 3)
+rotation = 4.71239
+
+[node name="Burst" type="Node2D" parent="."]
+position = Vector2(44, 3)
+rotation = -1.55508
+
+[node name="Sprite2D" type="Sprite2D" parent="Burst"]
+texture_filter = 1
+texture = ExtResource("2_0ekbn")
+
+[node name="CannonShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cld3y")
