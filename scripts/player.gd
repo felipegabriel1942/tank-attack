@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var rotation_speed = 1.5
 @export var health = 3
 
+const EXPLOSION = preload("res://scenes/explosion.tscn")
+
 func _physics_process(delta):
 	var direction = Vector2.ZERO
 	
@@ -29,9 +31,14 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-
-func _take_damage(damage):
+func take_damage(damage):
 	health -= damage
 	
 	if health <= 0:
-		queue_free()
+		_explode()
+
+func _explode():
+	var explosion_instance = EXPLOSION.instantiate()
+	explosion_instance.global_position = global_position
+	get_parent().add_child(explosion_instance)
+	queue_free()

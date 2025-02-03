@@ -4,6 +4,8 @@ extends Node2D
 @onready var burst = $Burst
 @onready var cannon_shot_sound = $"../CannonShotSound"
 
+var is_on_screen = false
+
 const ENEMY_BULLET = preload("res://scenes/enemy_bullet.tscn")
 const PLAYER = preload("res://scenes/player.tscn")
 
@@ -16,10 +18,8 @@ func _physics_process(delta):
 	if player != null:
 		look_at(player.global_position)
 
-	
-
 func _on_shoot_timer_timeout():
-	if get_player() != null:
+	if get_player() != null && is_on_screen:
 		_shoot()
 
 func _shoot():
@@ -44,3 +44,8 @@ func get_player():
 		return player_group[0]
 	else:
 		return null
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	is_on_screen = true
+

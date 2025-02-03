@@ -4,6 +4,8 @@ extends Node2D
 @onready var burst = $Burst
 @onready var cannon_shot_sound = $"../CannonShotSound"
 
+var is_reloading = false
+
 const BULLET = preload("res://scenes/bullet.tscn")
 
 func _ready():
@@ -16,7 +18,7 @@ func _physics_process(delta):
 	get_input()
 
 func _process(delta):
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && !is_reloading:
 		_shoot()
 
 func _shoot():
@@ -28,6 +30,15 @@ func _shoot():
 	bullet_container.add_child(bullet_instance)
 	cannon_shot_sound.play()
 	
+	_show_burst_effect()
+	_reload()
+
+func _show_burst_effect():
 	burst.visible = true
 	await get_tree().create_timer(0.2).timeout
 	burst.visible = false
+	
+func _reload():
+	is_reloading = true
+	await get_tree().create_timer(1).timeout
+	is_reloading = false

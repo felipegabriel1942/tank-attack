@@ -146,6 +146,10 @@ layer_0/tile_data = PackedInt32Array(131070, 0, 2, 196606, 0, 2, 196607, 65536, 
 position = Vector2(0, 127)
 rotation = -1.56633
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(126.999, -0.567227)
+rotation = 1.56633
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("3_s7mpl")]
