@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var bullet_container = $"../BulletContainer"
 @onready var burst = $Burst
 @onready var cannon_shot_sound = $"../CannonShotSound"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0orgnpkysc8y"]
+[gd_scene load_steps=11 format=3 uid="uid://0orgnpkysc8y"]
 
 [ext_resource type="Texture2D" uid="uid://lhterecigiu" path="res://assets/sprites/tankBody_red_outline.png" id="1_dkwbo"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dxlaj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crk0eavof52a2" path="res://assets/sprites/shotThin.png" id="5_5as11"]
 [ext_resource type="AudioStream" uid="uid://b5pijoufsqtlf" path="res://assets/sounds/cannon-shot.mp3" id="6_7panl"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="8_3c2xr"]
+[ext_resource type="Script" path="res://scripts/components/blink_component.gd" id="8_4alu7"]
 [ext_resource type="PackedScene" uid="uid://btl2sl18q3kim" path="res://scenes/damage_component.tscn" id="8_5ttem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udlud"]
@@ -53,6 +54,9 @@ stream = ExtResource("6_7panl")
 
 [node name="DamageComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_5ttem")]
 health_component = NodePath("../HealthComponent")
+
+[node name="BlinkComponent" type="Node" parent="."]
+script = ExtResource("8_4alu7")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_3c2xr")
