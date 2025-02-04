@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://crk0eavof52a2" path="res://assets/sprites/shotThin.png" id="5_5as11"]
 [ext_resource type="AudioStream" uid="uid://b5pijoufsqtlf" path="res://assets/sounds/cannon-shot.mp3" id="6_7panl"]
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="8_3c2xr"]
-[ext_resource type="PackedScene" uid="uid://btl2sl18q3kim" path="res://scenes/components/damage_component.tscn" id="8_5ttem"]
-[ext_resource type="PackedScene" uid="uid://c53ceqo2jsme6" path="res://scenes/components/blink_component.tscn" id="9_2xwbp"]
+[ext_resource type="PackedScene" uid="uid://btl2sl18q3kim" path="res://scenes/damage_component.tscn" id="8_5ttem"]
+[ext_resource type="Script" path="res://scripts/components/blink_component_2.gd" id="9_so4iq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udlud"]
 size = Vector2(38, 40)
@@ -58,9 +58,10 @@ health_component = NodePath("../HealthComponent")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_3c2xr")
 
-[node name="BlinkComponent" parent="." instance=ExtResource("9_2xwbp")]
+[node name="BlinkComponent" type="Node2D" parent="."]
+script = ExtResource("9_so4iq")
 
 [connection signal="timeout" from="ShootTimer" to="Cannon" method="_on_shoot_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="Cannon" method="_on_visible_on_screen_notifier_2d_screen_entered"]
-[connection signal="damaged" from="DamageComponent" to="." method="_on_damage"]
+[connection signal="damaged" from="DamageComponent" to="." method="_on_damage_component_damaged"]
 [connection signal="died" from="DamageComponent" to="." method="_on_damage_component_died"]

@@ -2,12 +2,9 @@ extends CharacterBody2D
 
 @export var move_speed = 75
 @export var rotation_speed = 1.5
-@export var blink_duration: float = 0.5  
-@export var blink_speed: float = 0.1     
 
 @onready var damage_component = $DamageComponent
-
-var tween: Tween
+@onready var blink_component = $BlinkComponent
 
 func _physics_process(delta):
 	var direction = Vector2.ZERO
@@ -35,17 +32,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_damaged():
-	_blink()
+	blink_component.blink()
 
 func _on_death():
 	queue_free()
-
-#TODO: arranjar uma forma de fazer isso com composição
-func _blink(color := Color.BLACK, reset_color := Color.WHITE):
-	if tween:
-		tween.kill()
-	tween = create_tween()
-	
-	for i in range(int(blink_duration / blink_speed)):
-		tween.tween_property(self, "modulate", color, blink_speed / 2)
-		tween.tween_property(self, "modulate", reset_color, blink_speed / 2)
