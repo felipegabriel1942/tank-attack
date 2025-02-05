@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 @onready var damage_component = $DamageComponent
 @onready var blink_component = $BlinkComponent
