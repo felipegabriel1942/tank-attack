@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0orgnpkysc8y"]
+[gd_scene load_steps=12 format=3 uid="uid://0orgnpkysc8y"]
 
 [ext_resource type="Texture2D" uid="uid://lhterecigiu" path="res://assets/sprites/tankBody_red_outline.png" id="1_dkwbo"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dxlaj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/components/health_component.gd" id="8_3c2xr"]
 [ext_resource type="PackedScene" uid="uid://btl2sl18q3kim" path="res://scenes/components/damage_component.tscn" id="8_5ttem"]
 [ext_resource type="PackedScene" uid="uid://c53ceqo2jsme6" path="res://scenes/components/blink_component.tscn" id="9_2xwbp"]
+[ext_resource type="PackedScene" uid="uid://bjyq0ejhdcauw" path="res://scenes/health_bar.tscn" id="10_sonpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udlud"]
 size = Vector2(38, 40)
@@ -30,12 +31,12 @@ wait_time = 3.0
 autostart = true
 
 [node name="Cannon" type="Node2D" parent="."]
-position = Vector2(-3, 0)
+position = Vector2(-6, 0)
 script = ExtResource("3_tj7ff")
 
 [node name="Sprite2D" type="Sprite2D" parent="Cannon"]
 texture_filter = 1
-position = Vector2(18, 3)
+position = Vector2(21, 3)
 rotation = 4.71239
 texture = ExtResource("4_d60yt")
 
@@ -45,6 +46,7 @@ rotation = -1.55508
 
 [node name="Sprite2D" type="Sprite2D" parent="Cannon/Burst"]
 texture_filter = 1
+position = Vector2(-1.04702, -2.98391)
 texture = ExtResource("5_5as11")
 
 [node name="CannonShotSound" type="AudioStreamPlayer" parent="."]
@@ -59,6 +61,13 @@ health_component = NodePath("../HealthComponent")
 script = ExtResource("8_3c2xr")
 
 [node name="BlinkComponent" parent="." instance=ExtResource("9_2xwbp")]
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_sonpc")]
+offset_left = -19.0
+offset_top = -41.0
+offset_right = 20.0
+offset_bottom = -29.0
+health_component = NodePath("../HealthComponent")
 
 [connection signal="timeout" from="ShootTimer" to="Cannon" method="_on_shoot_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="Cannon" method="_on_visible_on_screen_notifier_2d_screen_entered"]

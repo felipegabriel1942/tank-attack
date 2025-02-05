@@ -155,33 +155,25 @@ rotation = 1.56633
 [node name="Enemy" parent="Enemies" instance=ExtResource("3_s7mpl")]
 z_index = -1
 position = Vector2(3, -427)
-rotation = -3.13732
 collision_mask = 7
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(130, -252)
-rotation = 3.12839
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(-97, -250)
-rotation = -3.11311
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(-174, -534)
-rotation = 2.71672
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(155, -534)
-rotation = -2.78782
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(-5, -53)
-rotation = -3.12297
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(-467, -264)
-rotation = -3.12297
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("3_s7mpl")]
 position = Vector2(541, -277)
-rotation = -3.12297
